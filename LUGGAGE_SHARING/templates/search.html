@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Signup Form</title>
+  <style>
+    /* General Reset */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Container Styling */
+    .form-container {
+      width: 350px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Tabs Styling */
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      cursor: pointer;
+      background: #f4f4f9;
+      border: 1px solid #ccc;
+      border-bottom: none;
+      transition: background 0.3s;
+    }
+    .tab.active {
+      background: white;
+      font-weight: bold;
+    }
+
+    /* Form Styling */
+    form {
+      display: none;
+    }
+    form.active {
+      display: block;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    input:focus {
+      outline: none;
+      border-color: #007BFF;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Button Styling */
+    .btn {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .btn:focus {
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" onclick="showForm('offer-luggage')">offer-luggage</div>
+      <div class="tab active" onclick="showForm('find-luggage')">find-luggage</div>
+    </div>
+
+    <!-- Login Form -->
+    <form id="offer-luggage" class="active">
+      <label for="login-email">Email</label>
+      <input type="email" id="login-email" placeholder="Enter your email" required>
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" placeholder="Enter your password" required>
+      <button type="submit" class="btn">offer</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="find-luggage">
+      <label for="signup-name">Name</label>
+      <input type="text" id="signup-name" placeholder="Enter your name" required>
+      <label for="signup-email">Email</label>
+      <input type="email" id="signup-email" placeholder="Enter your email" required>
+      <label for="signup-password">Password</label>
+      <input type="password" id="signup-password" placeholder="Create a password" required>
+      <button type="submit" class="btn">find</button>
+    </form>
+  </div>
+
+  <script>
+    // JavaScript to toggle forms
+    function showForm(formType) {
+      const loginForm = document.getElementById('offer-luggage');
+      const signupForm = document.getElementById('find-luggage');
+      const tabs = document.querySelectorAll('.tab');
+
+      // Toggle Active Forms
+      if (formType === 'offer-luggage') {
+        loginForm.classList.add('active');
+        signupForm.classList.remove('active');
+        tabs[0].classList.add('active');
+        tabs[1].classList.remove('active');
+      } else {
+        signupForm.classList.add('active');
+        loginForm.classList.remove('active');
+        tabs[1].classList.add('active');
+        tabs[0].classList.remove('active');
+      }
+    }
+  </script>
+
+</body>
+</html>
