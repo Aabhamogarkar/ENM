@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Signup Form</title>
+
+</head>
+<body>
+
+  <div class="form-container">
+    <!-- Tabs -->
+    <div class="tabs">
+      <div class="tab active" onclick="showForm('Sign-In')">Sign-In</div>
+      <div class="tab active" onclick="showForm('Sign-Up')">Sign-Up</div>
+    </div>
+
+    <!-- Login Form -->
+    <form id="Sign-In" class="active" action="/login" method="post">
+        {%csrf_token %}
+      <label for="login-username">Username</label>
+      <input type="username" id="login-username" placeholder="Enter your username" required>
+
+      <label for="login-password">Password</label>
+      <input type="password" id="login-password" placeholder="Enter your password" required>
+
+      <button type="submit" class="btn">Sign-In</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="Sign-Up" action="/signup" method="post">
+        {%csrf_token %}
+      <label for="signup-name">Username</label>
+      <input type="text" id="signup-username" placeholder="Enter your Username" required>
+
+      <label for="signup-name">Email</label>
+      <input type="text" id="signup-email" placeholder="Enter your email" required>
+
+      <label for="signup-password">Password</label>
+      <input type="password" id="signup-password" placeholder="Create a password" required>
+
+      <label for="signup-password"> Confirm-Password</label>
+      <input type="password" id="signup- confirm-password" placeholder="Confirm password" required>
+
+      <button type="submit" class="btn">Sign-Up</button>
+    </form>
+  </div>
+
+  <script>
+    // JavaScript to toggle forms
+    function showForm(formType) {
+      const loginForm = document.getElementById('Sign-In');
+      const signupForm = document.getElementById('Sign-Up');
+      const tabs = document.querySelectorAll('.tab');
+
+      // Toggle Active Forms
+      if (formType === 'Sign-In') {
+        loginForm.classList.add('active');
+        signupForm.classList.remove('active');
+        tabs[0].classList.add('active');
+        tabs[1].classList.remove('active');
+      } else {
+        signupForm.classList.add('active');
+        loginForm.classList.remove('active');
+        tabs[1].classList.add('active');
+        tabs[0].classList.remove('active');
+      }
+    }
+  </script>
+
+</body>
+</html>

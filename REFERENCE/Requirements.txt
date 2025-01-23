@@ -1,0 +1,16 @@
+Urls we need:
+
+
+"/login" - Sigup ----
+    |
+-  Signin <--
+
+"/home" - Sender  (person sending the goods)
+- Courier (person taking the goods along with him on the journey)
+
+"/home/sender" -  2 search box - date of handin/date of delivery
+- 2 search box  - Origin/Desitination
+
+
+"/home/courier" -  2 search box - date of handin/date of delivery
+- 2 search box  - Origin/Desitination 

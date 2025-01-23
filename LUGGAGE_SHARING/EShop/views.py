@@ -4,28 +4,27 @@ from django.contrib.auth import logout
 from django.contrib.auth import authenticate,login
 
 # Create your views here.
-def index(request):
-    if request.user.is_anonymous:
-        return redirect('login')
-    return render(request,'index.html')
+def HomePage(request):
+    return render(request,'home.html')
 
-def loginUser(request):
+def SignupPage(request):
+    print('before if')
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password=request.POST.get('password')
-        # check if user has entered coorect credentials
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            # A backend authenticated the credentials
-            login(request,user)
-            return redirect("/")
-        else:
-            # No backend authenticated the credentials
-            return render(request,'login.html')
+        uname = request.POST.get('username')
+        email=request.POST.get('email')
+        pass1 = request.POST.get('password1')
+        pass2 = request.POST.get('password2')
+        print('after if')
 
+        print(uname,email,pass1,pass2)
+       
+   
+    return render(request,'signup.html')
+
+def LoginPage(request):
     return render(request,'login.html')
 
-def logoutUser(request):
-    logout(request)
-    return redirect('login')
+# def logoutUser(request):
+#     logout(request)
+#     return redirect('login')
     
