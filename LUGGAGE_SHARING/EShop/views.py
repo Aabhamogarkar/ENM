@@ -1,10 +1,13 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import logout
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url='login')
 def HomePage(request):
+    print('aab')
     return render(request,'home.html')
 
 def SignupPage(request):
@@ -22,9 +25,11 @@ def SignupPage(request):
             my_user=User.objects.create_user(uname,email,pass1)
             my_user.save()
             return redirect('login')
-            #return HttpResponse('User created successfully')
+            # return HttpResponse('User created successfully')
    
     return render(request,'signup.html')
+    
+    
 
 def LoginPage(request):
     if request.method == 'POST':
@@ -40,7 +45,7 @@ def LoginPage(request):
 
     return render(request,'login.html')
 
-# def logoutUser(request):
-#     logout(request)
-#     return redirect('login')
+def LogoutPage(request):
+    logout(request)
+    return redirect('login')
     
