@@ -17,12 +17,15 @@ def SignupPage(request):
         email=request.POST.get('email')
         pass1 = request.POST.get('password1')
         pass2 = request.POST.get('password2')
-
+        cell_phone= request.POST.get('cellphone')
         if pass1!=pass2:
             return HttpResponse("Passwords do not match")
         else:
             print('after if')
-            my_user=User.objects.create_user(uname,email,pass1)
+            my_user=User.objects.create_user(username=uname,
+            password=pass1,
+            email=email,
+            cell_phone=cell_phone)
             my_user.save()
             return redirect('login')
             # return HttpResponse('User created successfully')
