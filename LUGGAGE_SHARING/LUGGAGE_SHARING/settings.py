@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-qe$j0t_$xp1r6-vlalz-87-t(@aif6%&pn9#av=osw@bg#!*jg
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1']
+AUTH_USER_MODEL = 'EShop.CustomUser'
 
 
 # Application definition

@@ -1,8 +1,10 @@
 from django.shortcuts import render,HttpResponse,redirect
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 # Create your views here.
 @login_required(login_url='login')
@@ -11,21 +13,22 @@ def HomePage(request):
     return render(request,'home.html')
 
 def SignupPage(request):
-    print('before if')
+    # print('before if')
     if request.method == 'POST':   # Signup button pressed
         uname = request.POST.get('username')
         email=request.POST.get('email')
         pass1 = request.POST.get('password1')
         pass2 = request.POST.get('password2')
-        cell_phone= request.POST.get('cellphone')
+        phone= request.POST.get('phone')
         if pass1!=pass2:
             return HttpResponse("Passwords do not match")
         else:
-            print('after if')
+            # print('after if')
             my_user=User.objects.create_user(username=uname,
             password=pass1,
             email=email,
-            cell_phone=cell_phone)
+            phone_number=phone 
+            )
             my_user.save()
             return redirect('login')
             # return HttpResponse('User created successfully')
